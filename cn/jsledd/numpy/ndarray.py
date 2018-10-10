@@ -57,7 +57,57 @@ ndarray12 = np.zeros(4)
 ndarray13 = np.zeros_like(ndarray10)
 print(ndarray12)
 print(ndarray13)
-ndarray14 = np.full(4, )
-ndarray15 = np.full_like(ndarray10)
+ndarray14 = np.full((4,), fill_value="www.jsledd.cn")
+ndarray15 = np.full_like(ndarray10, fill_value=1)
 print(ndarray12)
 print(ndarray13)
+
+# numpy.frombuffer(buffer, dtype=None, count=-1, offset=0) frombuffer将data以流的形式读入转化成ndarray对象
+'''
+buffer  : 任何暴露缓冲区借口的对象
+count  : 需要读取的数据数量，默认为-1，读取所有数据
+offset  : 需要读取的起始位置，默认为0
+'''
+ndarray16 = np.frombuffer(b'www.jsledd.cn', dtype='S1')
+print(ndarray16)
+# numpy.fromiter(iterable, dtype, count=-1) 可迭代对象生成新的一维数组
+'''
+iterable 可迭代对象
+'''
+ndarray17 = np.fromiter(iter(range(5)), dtype=float)
+print(ndarray17)
+# numpy.arange(start=None, stop=None, step=None, dtype=None) 从数值范围创建数组
+'''
+start  : 范围的起始值，默认为0
+stop  : 范围的终止值（不包含）
+step  : 两个值的间隔，默认为1
+'''
+ndarray18 = np.arange(10, 50, 3)
+print(ndarray18)
+
+# numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None) 此函数类似于arange()函数。
+# 在此函数中，指定了范围之间的均匀间隔数量，而不是步长
+'''
+stop  : 序列的终止值，如果endpoint为true，该值包含于序列中
+num  : 要生成的等间隔样例数量，默认为50
+endpoint  : 序列中是否包含stop值，默认为ture
+retstep  : 如果为true，返回样例，以及连续数字之间的步长
+'''
+ndarray19 = np.linspace(10, 20, 5)
+ndarray20 = np.linspace(10, 20, 5, endpoint=False)
+print(ndarray19)
+print(ndarray20)
+x = np.linspace(1, 2, 5, retstep=True)
+print(x)
+# numpy.logscale(start, stop, num=50, endpoint=True, base=10.0, dtype=None)
+# 此函数返回一个ndarray对象，其中包含在对数刻度上均匀分布的数字。 刻度的开始和结束端点是某个底数的幂，通常为 10
+'''
+start  : 起始值是base ** start
+stop  : 起始值是base ** stop
+endpoint  : 如果为true，终止值包含在输出数组当中
+base  : 对数空间的底数，默认为10
+'''
+ndarray21 = np.logspace(1.0, 2.0, num=10)
+ndarray22 = np.logspace(1, 10, num=10, base=2)
+print(ndarray21)
+print(ndarray22)
